@@ -1,0 +1,9 @@
+.option-section {
+  border: 1px blue solid;
+  margin: 10px;
+}
+
+
+.vote-option-line{
+    display: flex;
+}

@@ -1,25 +1,26 @@
 import { useEffect, useContext } from "react";
 import useGetDocs from "./useGetDocs";
 import { useSetRecoilState, useRecoilValue } from "recoil";
-import { Post } from "../types/types";
-import { postAtom } from "../recoil/atoms";
-import { parsePostResponse } from "../libraries/parsers";
+import { Post, User } from "../types/types";
+import { postAtom, userAtom } from "../recoil/atoms";
+import { parsePostResponse, parseUserResponse } from "../libraries/parsers";
 
 const useBootstrapEffect = () => {
   const { sendRequest: getDocs } = useGetDocs();
 
-  const setPost = useSetRecoilState<Post[]>(postAtom);
-  const post = useRecoilValue(postAtom);
+  const setUser = useSetRecoilState<User[]>(userAtom);
+  const user = useRecoilValue(userAtom);
+  console.log("???user",user)
   useEffect(() => {
-    const getPost = async () => {
-      const response = await getDocs<Post>({ col: "post" });
+    const getUser = async () => {
+      const response = await getDocs<User>({ col: "users" });
       if (response) {
-        setPost(parsePostResponse(response));
+        setUser(parseUserResponse(response));
       }
     };
-    getPost();
-    console.log("here",post);
-  }, [setPost, getDocs]);
+    getUser();
+    // console.log("here",user);
+  }, [setUser, getDocs]);
 };
 
 export default useBootstrapEffect;

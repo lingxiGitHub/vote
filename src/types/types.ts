@@ -2,31 +2,34 @@ import { Timestamp } from "firebase/firestore";
 
 export type Comment = {
   id: string;
-  UserID: string;
-  Content: string;
-  PostID: string;
-  Timestamp: Timestamp;
+  userId: string;
+  content: string;
+  postId: string;
+  timestamp: Timestamp;
+  active: boolean;
 };
 
 export type Option = {
   id: string;
-  OptionText: string;
-  PostID: string;
-  UserVotes: string[];
-  VoteCount: number;
+  optionText: string;
+  postId: string;
+  userVotes: string[];
+  active: boolean;
 };
 
 export type Post = {
   id: string;
-  Content: string;
-  Timestamp: Timestamp;
-  Title: string;
-  UserID: string;
+  content: string;
+  timestamp: Timestamp;
+  title: string;
+  userId: string;
+  active: boolean;
 };
 
 export type User = {
   id: string;
-  Email: string;
-  Password: string;
-  Username: string;
+  email: string;
+  password: string;
+  username: string;
+  active: boolean;
 };

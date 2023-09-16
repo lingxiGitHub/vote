@@ -60,13 +60,16 @@ const useGetDocs = (): GetDocsType => {
           snapshot = await getDocs(query(docRef, ...conditions));
         } else {
           snapshot = await getDocs(docRef);
+
         }
+
       } catch (err) {
         console.error(err);
       }
       const tempArray: T[] = [];
       if (snapshot) {
         snapshot.forEach((s) => {
+      
           tempArray.push({ ...s.data(), id: s.id } as DBRecord as T);
         });
       }
